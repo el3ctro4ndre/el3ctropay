@@ -1,7 +1,7 @@
 ## el3ctropay
 Un semplice gateway di pagamento per solana
 
-<img width="393" height="645" alt="image" src="https://github.com/user-attachments/assets/e1d5908b-f8ec-4bc4-bf9d-59fcfff3d013" />
+<img width="388" height="647" alt="image" src="https://github.com/user-attachments/assets/818f2d9e-c09d-4865-a6ac-02db4be3973e" />
 
 ### ATTENZIONE
 Al momento el3ctropay è in work in progress, quindi è attivo sulla solana devnet.
