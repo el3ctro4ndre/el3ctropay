@@ -1,52 +1,52 @@
 ## el3ctropay
-A simple solana payment gateway
+Un semplice gateway di pagamento solana
 
-### WARNING
-Now el3ctropay is working on the solana devnet since it's still a work in progress
+### ATTENZIONE
+Al momento el3ctropay è in work in progress, quindi è attivo sulla solana devnet.
 
-### Get a ket
-You can request an API key by contacting @el3ctro4ndre in discord
+### Ottenere una chiave API
+Puoi richiedere una chiave API contattando @el3ctro4ndre su discord.
 
-### Create an order
-You can create a payment order on our gateway via our API, here there's a Python example on how to send a complete API call with your key: 
+### Crea un ordine
+Puoi creare un ordine di pagamento su el3ctropay tramite una chiamata API, il seguente esempio mostra come inviare una chiamata API completa tramite la tua chiave:
 ```
-API_KEY = "YOUR_API_KEY"
+API_KEY = "LA_TUA_CHIAVE_API"
 
 r = requests.post("https://api.el3ctroservices.it/el3ctropay/create-order/", json={
-    "label": "COMPANY NAME LLC",
-    "message": "ORDER NUMBER OR WHATEVER MESSAGE YOU LIKE",
-    "wallet": "YOUR COMPANY WALLET", 
-    "amount": THE SOL AMOUNT YOU WANT TO RECEIVE (example: 0.01 )
+    "label": "SOCIETÀ S.R.L.",
+    "message": "NUMERO DI FATTURA O QUALSIASI MESSAGGIO A TUO PIACIMENTO",
+    "wallet": "IL WALLET DOVE RICEVERE I SOL", 
+    "amount": LA QUANTITÀ DI SOL CHE DOVETE RICEVERE (esempio: 0.01)
 }, headers={
     "Authorization": f"Bearer {API_KEY}"
 })
 ```
-If the order creation happened correctly you will receive a response like this one:
+Se la creazione dell'ordine avviene con successo riceverai una risposta con questo formato JSON:
 ```
 { "payment_url": "https://pay.el3ctroservices.it/pay/?order=ORDER_ID" }
 ```
 
-When you receive the payment URL you just need to redirect your client to that page.
+Ricevuto l'URL di pagamento dovrete solamente reindirizzare a quella pagina il cliente.
 
-### Fetch all your transactions
-To get a complete list of the transactions you created and their status you can use this simple call:
+### Ottieni la lista dei tuoi ordini
+Per ottenere una lista completa degli ordini di pagamento che hai creato e visionare il loro stato puoi usare questa semplice chiamata:
 ```
-API_KEY = "YOUR_API_KEY"
+API_KEY = "LA_TUA_CHIAVE_API"
 
 r = requests.get("https://api.el3ctroservices.it/el3ctropay/fetch-orders/", headers={
     "Authorization": f"Bearer {API_KEY}"
 })
 ```
-You will receive a response in JSON list like this:
+Riceverai una risposta con questo formato JSON:
 ```
 {
     "orders": [
         {
-            "reference": "UNIQUE EL3CTROPAY TRANSACTION ID",
-            "wallet": "YOUR WALLET",
-            "paid": 1,                                        -- or 0 if the order hasn't been paid yet
-            "amount": YOUR AMOUNT,
-            "link": "https://solscan.io/tx/TRANSACTION"       -- or null if the order hasn't been paid yet
+            "reference": "ID ORDINE UNICO",
+            "wallet": "IL TUO WALLET",
+            "paid": 1,                                        -- o 0 se l'ordine non è ancora stato pagato dal cliente
+            "amount": QUANTITÀ,
+            "link": "https://solscan.io/tx/TRANSACTION"       -- o null se l'ordine non è ancora stato pagato dal cliente
         },
         {
             ...
