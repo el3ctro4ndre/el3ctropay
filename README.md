@@ -5,7 +5,7 @@ A simple solana payment gateway
 Now el3ctropay is working on the solana devnet since it's still a work in progress
 
 ### Get a ket
-You can request an API key via email at mail@example.com
+You can request an API key by contacting @el3ctro4ndre in discord
 
 ### Create an order
 You can create a payment order on our gateway via our API, here there's a Python example on how to send a complete API call with your key: 
