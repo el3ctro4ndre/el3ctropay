@@ -10,28 +10,28 @@ You can request an API key by contacting @el3ctro4ndre in discord
 ### Create an order
 You can create a payment order on our gateway via our API, here there's a Python example on how to send a complete API call with your key: 
 ```
-API_KEY = "YOUT_API_KEY"
+API_KEY = "YOUR_API_KEY"
 
 r = requests.post("https://api.el3ctroservices.it/el3ctropay/create-order/", json={
-    "label": "Società Inutili al Piripillo Srl",
-    "message": "Ordine N° 21934",
-    "wallet": "H9VGCU5aHKPhHu255GcGHEKgfZonQaMe7D4dBMe4kQQw", 
-    "amount": 0.01
+    "label": "COMPANY NAME LLC",
+    "message": "ORDER NUMBER OR WHATEVER MESSAGE YOU LIKE",
+    "wallet": "YOUR COMPANY WALLET", 
+    "amount": THE SOL AMOUNT YOU WANT TO RECEIVE (example: 0.01 )
 }, headers={
     "Authorization": f"Bearer {API_KEY}"
 })
 ```
 If the order creation happened correctly you will receive a response like this one:
 ```
-{ "payment_page": "https://pay.el3ctroservices.it/pay/?order=ORDER_ID" }
+{ "payment_url": "https://pay.el3ctroservices.it/pay/?order=ORDER_ID" }
 ```
 
-When you receive the URL you just need to redirect your client to that page.
+When you receive the payment URL you just need to redirect your client to that page.
 
 ### Fetch all your transactions
 To get a complete list of the transactions you created and their status you can use this simple call:
 ```
-API_KEY = "YOUT_API_KEY"
+API_KEY = "YOUR_API_KEY"
 
 r = requests.get("https://api.el3ctroservices.it/el3ctropay/fetch-orders/", headers={
     "Authorization": f"Bearer {API_KEY}"
