@@ -1,10 +1,13 @@
 ## el3ctropay
 A simple solana payment gateway
 
-### GET A KEY
+### WARNING
+Now el3ctropay is working on the solana devnet since it's still a work in progress
+
+### Get a ket
 You can request an API key via email at mail@example.com
 
-### CREATE AN ORDER
+### Create an order
 You can create a payment order on our gateway via our API, here there's a Python example on how to send a complete API call with your key: 
 ```
 API_KEY = "YOUT_API_KEY"
@@ -25,7 +28,7 @@ If the order creation happened correctly you will receive a response like this o
 
 When you receive the URL you just need to redirect your client to that page.
 
-### FETCH ALL YOUR TRANSACTIONS
+### Fetch all your transactions
 To get a complete list of the transactions you created and their status you can use this simple call:
 ```
 API_KEY = "YOUT_API_KEY"
