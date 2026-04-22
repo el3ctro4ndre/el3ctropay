@@ -1,41 +1,40 @@
 # el3ctropay
-Un semplice gateway di pagamento per solana
+A simple Solana payment gateway.
 
-### ATTENZIONE
-Al momento el3ctropay è in work in progress, quindi è attivo sulla solana devnet.
+### WARNING
+At the moment el3ctropay is still a work in progress, it's fully working on the solana devnet.
 
-### Features e work in progress
-- [x] Sistema API
-- [x] Sistema Chiavi API
-- [x] Pagamento con QR e Link 
-- [x] Stile di base
-- [x] Redirect al sito web originale una volta terminato il pagamento
-- [x] Server callback per confermare il pagamento all'esercente
-- [x] Restyle della UI
+### Features and work in progress
+- [x] API base system
+- [x] API keys system
+- [x] QR code and direct link payment 
+- [x] Base UI style
+- [x] Redirect back to original website once the payment is completed
+- [x] Server callback to confirm the seller that the payment has been completed
+- [x] UI Restyle
 - [ ] Translate from Italian to English (I should have written everything in english at first)
 
-Tutti sono i benvenuti nel aprire degli [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) per proporre nuove features
+Everybody is welcome to open [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) to suggest new features
 
-### Aggiornamento dello stile
-| Prima | Dopo |
-|-------|------|
+### UI Restyling (later image in english language coming soon
+| Before | After |
+|--------|-------|
 | ![](https://github.com/user-attachments/assets/5b530ebc-a99c-4f2a-a8b9-1290b9607b2a) | ![](https://github.com/user-attachments/assets/08a0b9dc-5247-4e9f-8329-db92d9cca991) |
 
 ### Disclaimer
-Quando si crea un ordine di pagamento riceverete esattamente la cifra inserita ma il cliente pagherà 0.0002 SOL in più come "tassa di processing", questo costo corrisponde a circca 0,015€, o un centesimo e mezzo di euro, permettendomi di mantenere attivo il servizio. 
-(valore in euro aggiornato il 21 aprile 2026)
+el3ctropay makes the customer pay 0.0002 SOL more as a "processing fee", this cost equals about 0,015€, also told one and a half euro cent, making the project able to sustain the service costs to keep it online. (Euro value updated at 22th April 2026)
 
 ## DOCS
 
-### Ottenere una chiave API
-L'autenticazione tramite chiave API protegge il gateway di pagamento da spam, richiedere una chiave non comporta alcun costo.
-È possibile richiedere una chiave API contattando @el3ctro4ndre su discord.
-Assieme alla chiave API si otterrà un da utilizzare in caso vogliate creare un webhook dove ricevere le conferme di pagamento automatiche.
+### Get an API Key
+The authentication via API Key protects the payment gateway from spam and ensuring privacy.
+Requesting an API Key is free of charge and can be done by contacting [@el3ctro4ndre](https://discord.com/users/617325296932356126) on discord.
+The API Key is sent to you with a secret that you'll need in case you want to setup a webhook on where to receive automatic payment confirmation.
 
-### Crea un ordine
-Si può creare un ordine di pagamento su el3ctropay tramite una chiamata API, il seguente esempio mostra come inviare una chiamata API completa tramite la tua chiave:
+### Create a payment order
+A payment order can be created via an authenticated API call, the code down below shows a python example of how it can be done:
 ```
-API_KEY = "LA_VOSTRA_CHIAVE_API"
+API_KEY = "YOUR_API_KEY"
 
 r = requests.post("https://api.el3ctroservices.it/el3ctropay/create-order/", json={
     "label": "SOCIETÀ S.R.L.",
