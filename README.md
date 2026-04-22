@@ -101,5 +101,5 @@ async def webhook(request: Request, x_signature: str = Header(None)):
     data = await request.json()
     print("Transaction received:")
     print(data)
-}
+    return {"status": "ok"}
 ```
