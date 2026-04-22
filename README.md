@@ -4,7 +4,7 @@ A simple Solana payment gateway.
 ### WARNING
 At the moment el3ctropay is still a work in progress, it's fully working on the solana devnet.
 
-I created a public API key and secret that people can use as a demo since the gateway is still on the devnet, since these keys are available to be used by everyone use them only for testing:  
+Since the gateway is still on the devnet I created a public API key and secret that people can use as demo and testing, since these keys are available to be used by everyone don't use them for final/personal use:  
 
 API key: sk_live_ec4601d2fa78156f3df132a286449cb377d12408c351a645aa429bbe00e55def  
 Secret: 54b3f8b4ef5a0bbc815ef1140b421062522e421f00eba52060198d5ba1e29e77
@@ -22,13 +22,13 @@ Secret: 54b3f8b4ef5a0bbc815ef1140b421062522e421f00eba52060198d5ba1e29e77
 
 Everybody is welcome to open [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) to suggest new features
 
-### UI Restyling ("later" image in english language coming soon)
+### UI Restyling
 | Before | After |
 |--------|-------|
 | ![](https://github.com/user-attachments/assets/5b530ebc-a99c-4f2a-a8b9-1290b9607b2a) | ![](https://github.com/user-attachments/assets/08a0b9dc-5247-4e9f-8329-db92d9cca991) |
 
 ### Disclaimer
-el3ctropay makes the customer pay 0.0002 SOL more as a "processing fee", this cost equals about 0,015€, also told one and a half euro cent, making the project able to sustain the service costs to keep it online. (Euro value updated at 22th April 2026)
+el3ctropay makes the customer pay 0.0002 SOL more as a "processing fee", this cost equals about 0,015€, making the project able to sustain his own service costs to keep it online. (Euro value updated at 22th April 2026)
 
 ## DOCS
 
