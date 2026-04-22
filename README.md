@@ -4,11 +4,9 @@ A simple Solana payment gateway.
 ### WARNING
 At the moment el3ctropay is still a work in progress, it's fully working on the solana devnet.
 
-I created a public API key and secret that people can use as a demo since the gateway is still on the devnet, since these keys are available to be used by everyone use them only for testing:
+I created a public API key and secret that people can use as a demo since the gateway is still on the devnet, since these keys are available to be used by everyone use them only for testing:  
 
-
-API key: sk_live_ec4601d2fa78156f3df132a286449cb377d12408c351a645aa429bbe00e55def
-
+API key: sk_live_ec4601d2fa78156f3df132a286449cb377d12408c351a645aa429bbe00e55def  
 Secret: 54b3f8b4ef5a0bbc815ef1140b421062522e421f00eba52060198d5ba1e29e77
 
 ### Features and work in progress
@@ -20,11 +18,11 @@ Secret: 54b3f8b4ef5a0bbc815ef1140b421062522e421f00eba52060198d5ba1e29e77
 - [x] Server callback to confirm the seller that the payment has been completed
 - [x] UI Restyle
 - [x] README.md translation from Italian to English (I should have written everything in english at first)
-- [ ] UI translation from Italian to English (I should have written everything in english at first)
+- [x] UI translation from Italian to English (I should have written everything in english at first)
 
 Everybody is welcome to open [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) to suggest new features
 
-### UI Restyling ("later" image in english language coming soon
+### UI Restyling ("later" image in english language coming soon)
 | Before | After |
 |--------|-------|
 | ![](https://github.com/user-attachments/assets/5b530ebc-a99c-4f2a-a8b9-1290b9607b2a) | ![](https://github.com/user-attachments/assets/08a0b9dc-5247-4e9f-8329-db92d9cca991) |
