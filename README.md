@@ -25,6 +25,7 @@ Quando si crea un ordine di pagamento riceverete esattamente la cifra inserita m
 ### Ottenere una chiave API
 L'autenticazione tramite chiave API protegge il gateway di pagamento da spam, richiedere una chiave non comporta alcun costo.
 È possibile richiedere una chiave API contattando @el3ctro4ndre su discord.
+Assieme alla chiave API si otterrà un da utilizzare in caso vogliate creare un webhook dove ricevere le conferme di pagamento automatiche.
 
 ### Crea un ordine
 Si può creare un ordine di pagamento su el3ctropay tramite una chiamata API, il seguente esempio mostra come inviare una chiamata API completa tramite la tua chiave:
