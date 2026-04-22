@@ -88,7 +88,6 @@ def verify_signature(body: bytes, signature: str, secret: str):
         body,
         hashlib.sha256
     ).hexdigest()
-
     return hmac.compare_digest(expected, signature)
 
 @app.post("/webhook")
