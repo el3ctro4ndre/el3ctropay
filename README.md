@@ -1,13 +1,8 @@
-## el3ctropay
+# el3ctropay
 Un semplice gateway di pagamento per solana
-
-<img width="388" height="647" alt="image" src="https://github.com/user-attachments/assets/5b530ebc-a99c-4f2a-a8b9-1290b9607b2a" />
 
 ### ATTENZIONE
 Al momento el3ctropay è in work in progress, quindi è attivo sulla solana devnet.
-
-### Invia un suggerimento
-Aprite degli [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) per consigliarci metodi di server callback da implementare.
 
 ### Features e work in progress
 - [x] Sistema API
@@ -16,11 +11,21 @@ Aprite degli [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) per con
 - [x] Stile di base
 - [x] Redirect al sito web originale una volta terminato il pagamento
 - [x] Server callback per confermare il pagamento all'esercente
-- [ ] Stile avanzato (HTML e CSS proprietari con conseguente rimozione di bootstrap)
+- [x] Restyle della UI
+
+Tutti sono i benvenuti nel aprire degli [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) per proporre nuove features
+
+### Aggiornamento dello stile
+<p align="center">
+  <img width="37%" alt="image" src="https://github.com/user-attachments/assets/5b530ebc-a99c-4f2a-a8b9-1290b9607b2a" style="margin-right: 10px;" />
+  <img width="45%" alt="image" src="https://github.com/user-attachments/assets/08a0b9dc-5247-4e9f-8329-db92d9cca991" />
+</p>
 
 ### Disclaimer
 Quando si crea un ordine di pagamento riceverete esattamente la cifra inserita ma il cliente pagherà 0.0002 SOL in più come "tassa di processing", questo costo corrisponde a circca 0,015€, o un centesimo e mezzo di euro, permettendomi di mantenere attivo il servizio. 
 (valore in euro aggiornato il 21 aprile 2026)
+
+## DOCS
 
 ### Ottenere una chiave API
 L'autenticazione tramite chiave API protegge il gateway di pagamento da spam, richiedere una chiave non comporta alcun costo.
