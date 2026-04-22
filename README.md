@@ -6,13 +6,17 @@ Un semplice gateway di pagamento per solana
 ### ATTENZIONE
 Al momento el3ctropay è in work in progress, quindi è attivo sulla solana devnet.
 
+### Invia un suggerimento
+Aprite degli [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) per consigliarci metodi di server callback da implementare.
+
 ### Features e work in progress
 - [x] Sistema API
 - [x] Sistema Chiavi API
 - [x] Pagamento con QR e Link 
 - [x] Stile di base
-- [ ] Redirect al sito web originale una volta terminato il pagamento
+- [x] Redirect al sito web originale una volta terminato il pagamento
 - [ ] Stile avanzato (html e css proprietari con conseguente rimozione di bootstrap
+- [ ] Server callback per confermare il pagamento all'esercente
 
 ### Disclaimer
 Quando si crea un ordine di pagamento riceverete esattamente la cifra inserita ma il cliente pagherà 0.0002 SOL in più come "tassa di processing", questo costo corrisponde a circca 0,015€, o un centesimo e mezzo di euro, permettendomi di mantenere attivo il servizio. 
