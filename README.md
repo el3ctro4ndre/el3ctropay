@@ -1,5 +1,5 @@
 # el3ctropay
-A simple Solana payment gateway.
+Are you looking for a fast, easy and reliable alternative to stripe? el3ctropay is what you need, a simple solana payment gateway that can be used in any application via API. 
 
 ### WARNING
 At the moment el3ctropay is still a work in progress, it's fully working on the solana devnet.
