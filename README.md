@@ -30,7 +30,7 @@ Everybody is welcome to open [issues](https://github.com/el3ctro4ndre/el3ctropay
 ### Disclaimer
 el3ctropay makes the customer pay 0.0002 SOL more as a "processing fee", this cost equals about 0,015€, making the project able to sustain his own service costs to keep it online. (Euro value updated at 22th April 2026)
 
-If you have any doubts you can check the [Privaci Policy](https://pay.el3ctroservices.it/privacy-policy/) and the [Terms and Conditions](https://pay.el3ctroservices.it/terms-and-conditions/).
+If you have any doubts you can check the [Privacy Policy](https://pay.el3ctroservices.it/privacy-policy/) and the [Terms and Conditions](https://pay.el3ctroservices.it/terms-and-conditions/).
 
 ## DOCS
 
