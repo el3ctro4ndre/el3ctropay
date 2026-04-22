@@ -4,6 +4,10 @@ A simple Solana payment gateway.
 ### WARNING
 At the moment el3ctropay is still a work in progress, it's fully working on the solana devnet.
 
+I created a public API key and secret that people can use as a demo since the gateway is still on the devnet, since these keys are available to be used by everyone use them only for testing:
+API key: sk_live_ec4601d2fa78156f3df132a286449cb377d12408c351a645aa429bbe00e55def
+Secret: 54b3f8b4ef5a0bbc815ef1140b421062522e421f00eba52060198d5ba1e29e77
+
 ### Features and work in progress
 - [x] API base system
 - [x] API keys system
@@ -12,11 +16,12 @@ At the moment el3ctropay is still a work in progress, it's fully working on the 
 - [x] Redirect back to original website once the payment is completed
 - [x] Server callback to confirm the seller that the payment has been completed
 - [x] UI Restyle
-- [ ] Translate from Italian to English (I should have written everything in english at first)
+- [x] README.md translation from Italian to English (I should have written everything in english at first)
+- [ ] UI translation from Italian to English (I should have written everything in english at first)
 
 Everybody is welcome to open [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) to suggest new features
 
-### UI Restyling (later image in english language coming soon
+### UI Restyling ("later" image in english language coming soon
 | Before | After |
 |--------|-------|
 | ![](https://github.com/user-attachments/assets/5b530ebc-a99c-4f2a-a8b9-1290b9607b2a) | ![](https://github.com/user-attachments/assets/08a0b9dc-5247-4e9f-8329-db92d9cca991) |
@@ -37,42 +42,42 @@ A payment order can be created via an authenticated API call, the code down belo
 API_KEY = "YOUR_API_KEY"
 
 r = requests.post("https://api.el3ctroservices.it/el3ctropay/create-order/", json={
-    "label": "SOCIETÀ S.R.L.",
-    "message": "NUMERO DI FATTURA, DI ORDINE O QUALSIASI MESSAGGIO A PIACIMENTO",
-    "wallet": "IL WALLET DOVE RICEVERE I SOL", 
-    "amount": LA QUANTITÀ DI SOL CHE DOVETE RICEVERE (esempio: 0.01),
-    "redirect": "URL PAGINA DOVE REINDIRIZZARE IL CLIENTE A PAGAMENTO AVVENUTO",
-    "webhook": "WEBHOOK DOVE RICEVERE LA CONFERMA DEL PAGAMENTO (https://example.com/webhook)"  -- OPZIONALE
+    "label": "YOUR SOCIETY LLC",
+    "message": "ORDER NUMBER OR ANY MESSAGE OF YOUR LIKING",
+    "wallet": "WALLET WHERE YOU WANT TO RECEIVE THE SOL", 
+    "amount": QUANTITY OF SOL YOU WANT TO RECEIVE (example: 0.529),
+    "redirect": "URL OF THE PAGE THE CLIENT WILL BE REDIRECTED AFTER THE PAYMENT HAS SUCCEDED",
+    "webhook": "WEBHOOK URL TO RECEIVE THE AUTOMATIC PAYMENT CONFIRMATION"  -- OPTIONAL
 }, headers={
     "Authorization": f"Bearer {API_KEY}"
 })
 ```
-Se la creazione dell'ordine avviene con successo si riceverà una risposta con questo formato JSON:
+Once the payment order will be successfully creted you will receive a JSON response with this structure:
 ```
 { "payment_url": "https://pay.el3ctroservices.it/pay/?order=ORDER_ID" }
 ```
 
-Una volta ricevuto l'URL di pagamento si deve solamente reindirizzare a quella pagina il cliente.
+The only thing left to do is redirect the client to that URL.
 
-### Ottenere la lista dei tuoi ordini
-Per ottenere una lista completa degli ordini di pagamento che creati e visionare il loro stato si può usare questa semplice chiamata:
+### Fetch your order list
+To fetch a complete order list with their status you can use this API call:
 ```
-API_KEY = "LA_VOSTRA_CHIAVE_API"
+API_KEY = "YOUR_API_KEY"
 
 r = requests.get("https://api.el3ctroservices.it/el3ctropay/fetch-orders/", headers={
     "Authorization": f"Bearer {API_KEY}"
 })
 ```
-Si riceverà una risposta con questo formato JSON:
+You will receive a JSON response with this list structure:
 ```
 {
     "orders": [
         {
-            "reference": "ID ORDINE UNICO",
-            "wallet": "IL TUO WALLET",
-            "paid": 1,                                        -- o 0 se l'ordine non è ancora stato pagato dal cliente
-            "amount": QUANTITÀ,
-            "link": "https://solscan.io/tx/TRANSACTION"       -- o null se l'ordine non è ancora stato pagato dal cliente
+            "reference": "UNIQUE ORDER ID",
+            "wallet": "YOUR WALLET",
+            "paid": 1,                                        -- or 0 if the client hasn't paid yed
+            "amount": SOL QUANTITY,
+            "link": "https://solscan.io/tx/TRANSACTION"       -- or null id the client hasn't paid yet
         },
         {
             ...
@@ -80,14 +85,16 @@ Si riceverà una risposta con questo formato JSON:
     ]
 ```
 
-### Ricevere la conferma del pagamento
-Se si vuole ricevere una conferma automatizzata a pagamento avvenuto si può usare il seguente codice come esempio per creare un webhook in FastAPI da inoltrare al gateway per ricevere i dati di conferma, la richiesta inviata dal gateway è firmata e nel codice di esempio si ha anche la parte di verifica della firma tramite il vostro secret associato alla vostra chiave API.
+### Automatic payment confirmation
+To make your platform receive an automatic payment confirmation you can create an api endpoint the gateway will use. 
+All the confirmations are signed and only with your secret you can verify them.
+The python code down below is an example on how to create a very simple FastAPI endpoint that can verify the message signature, you can put your own code to manage the received data but you must keep the `{"status": "ok"}` response to the gateway.
 ```
 from fastapi import FastAPI, Request, Header, HTTPException
 import hmac
 import hashlib
 
-SECRET = "IL_VOSTRO_SECRET" 
+SECRET = "YOUR_SECRET" 
 
 app = FastAPI()
 
@@ -108,18 +115,18 @@ async def webhook(request: Request, x_signature: str = Header(None)):
 
     data = await request.json()
 
-    # Inizio del vostro codice per gestire i dati ricevuti
+    ### START OF THE DATA MANAGEMENT OF YOUR WEBSITE
     print("Pagamento ricevuto:")
     print(data)
-    # Fine del vostro codice per gestire i dati ricevuti
+    ### END OF THE DATA MANAGEMENT OF YOUR WEBSITE
     
     return {"status": "ok"}
 ```
-i dati che riceverete in automatico saranno tutti stringhe e avranno questo formato JSON:
+The datas that the gateway will send in the automatic payment confirmation have the following JSON structure:
 ```
 {
-    "amount": "LA QUANTITÀ DI SOL CHE AVETE RICEVUTO", 
-    "reference": "ID ORDINE UNICO", 
-    "tx": "CODICE TRANSAZIONE SULLA BLOCKCHAIN SOLANA"
+    "amount": "SOL QUANTITY YOU HAVE RECEIVED", 
+    "reference": "UNIQUE ORDER ID", 
+    "tx": "TRANSACTION CODE OF THE SOLANA BLOCKCHAIN"
 }
 ```
