@@ -15,7 +15,7 @@ Aprite degli [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) per con
 - [x] Pagamento con QR e Link 
 - [x] Stile di base
 - [x] Redirect al sito web originale una volta terminato il pagamento
-- [ ] Stile avanzato (html e css proprietari con conseguente rimozione di bootstrap
+- [ ] Stile avanzato (HTML e CSS proprietari con conseguente rimozione di bootstrap)
 - [ ] Server callback per confermare il pagamento all'esercente
 
 ### Disclaimer
