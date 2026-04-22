@@ -16,10 +16,9 @@ Al momento el3ctropay è in work in progress, quindi è attivo sulla solana devn
 Tutti sono i benvenuti nel aprire degli [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) per proporre nuove features
 
 ### Aggiornamento dello stile
-<p align="center">
-  <img width="37%" alt="image" src="https://github.com/user-attachments/assets/5b530ebc-a99c-4f2a-a8b9-1290b9607b2a" style="margin-right: 10px;" />
-  <img width="45%" alt="image" src="https://github.com/user-attachments/assets/08a0b9dc-5247-4e9f-8329-db92d9cca991" />
-</p>
+| Prima | Dopo |
+|-------|------|
+| ![](https://github.com/user-attachments/assets/5b530ebc-a99c-4f2a-a8b9-1290b9607b2a) | ![](https://github.com/user-attachments/assets/08a0b9dc-5247-4e9f-8329-db92d9cca991) |
 
 ### Disclaimer
 Quando si crea un ordine di pagamento riceverete esattamente la cifra inserita ma il cliente pagherà 0.0002 SOL in più come "tassa di processing", questo costo corrisponde a circca 0,015€, o un centesimo e mezzo di euro, permettendomi di mantenere attivo il servizio. 
