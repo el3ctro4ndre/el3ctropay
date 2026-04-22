@@ -15,8 +15,8 @@ Aprite degli [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) per con
 - [x] Pagamento con QR e Link 
 - [x] Stile di base
 - [x] Redirect al sito web originale una volta terminato il pagamento
+- [x] Server callback per confermare il pagamento all'esercente
 - [ ] Stile avanzato (HTML e CSS proprietari con conseguente rimozione di bootstrap)
-- [ ] Server callback per confermare il pagamento all'esercente
 
 ### Disclaimer
 Quando si crea un ordine di pagamento riceverete esattamente la cifra inserita ma il cliente pagherà 0.0002 SOL in più come "tassa di processing", questo costo corrisponde a circca 0,015€, o un centesimo e mezzo di euro, permettendomi di mantenere attivo il servizio. 
@@ -35,7 +35,9 @@ r = requests.post("https://api.el3ctroservices.it/el3ctropay/create-order/", jso
     "label": "SOCIETÀ S.R.L.",
     "message": "NUMERO DI FATTURA, DI ORDINE O QUALSIASI MESSAGGIO A PIACIMENTO",
     "wallet": "IL WALLET DOVE RICEVERE I SOL", 
-    "amount": LA QUANTITÀ DI SOL CHE DOVETE RICEVERE (esempio: 0.01)
+    "amount": LA QUANTITÀ DI SOL CHE DOVETE RICEVERE (esempio: 0.01),
+    "redirect": "URL PAGINA DOVE REINDIRIZZARE IL CLIENTE A PAGAMENTO AVVENUTO",
+    "webhook": "WEBHOOK DOVE RICEVERE LA CONFERMA DEL PAGAMENTO (https://example.com/webhook)"  -- OPZIONALE
 }, headers={
     "Authorization": f"Bearer {API_KEY}"
 })
@@ -71,5 +73,33 @@ Si riceverà una risposta con questo formato JSON:
             ...
         }
     ]
+```
+
+### Ricevere la conferma del pagamento
+Se si vuole ricevere una conferma automatizzata a pagamento avvenuto si può usare il seguente codice come esempio per creare un webhook da inoltrare al gateway per ricevere i dati di conferma, la richiesta inviata dal gateway è firmata e nel codice di esempio si ha anche la parte di verifica della firma.
+```
+import hmac
+import hashlib
+from fastapi import Request, Header, HTTPException
+
+def verify_signature(body: bytes, signature: str, secret: str):
+    expected = hmac.new(
+        secret.encode(),
+        body,
+        hashlib.sha256
+    ).hexdigest()
+
+    return hmac.compare_digest(expected, signature)
+
+@app.post("/webhook")
+async def webhook(request: Request, x_signature: str = Header(None)):
+    body = await request.body()
+
+    if not verify_signature(body, x_signature, "supersecret"):
+        raise HTTPException(status_code=400, detail="Invalid signature")
+
+    data = await request.json()
+    print("Transaction received:")
+    print(data)
 }
 ```
