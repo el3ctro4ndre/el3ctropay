@@ -29,7 +29,7 @@ L'autenticazione tramite chiave API protegge il gateway di pagamento da spam, ri
 ### Crea un ordine
 Si può creare un ordine di pagamento su el3ctropay tramite una chiamata API, il seguente esempio mostra come inviare una chiamata API completa tramite la tua chiave:
 ```
-API_KEY = "LA_TUA_CHIAVE_API"
+API_KEY = "LA_VOSTRA_CHIAVE_API"
 
 r = requests.post("https://api.el3ctroservices.it/el3ctropay/create-order/", json={
     "label": "SOCIETÀ S.R.L.",
@@ -52,7 +52,7 @@ Una volta ricevuto l'URL di pagamento si deve solamente reindirizzare a quella p
 ### Ottenere la lista dei tuoi ordini
 Per ottenere una lista completa degli ordini di pagamento che creati e visionare il loro stato si può usare questa semplice chiamata:
 ```
-API_KEY = "LA_TUA_CHIAVE_API"
+API_KEY = "LA_VOSTRA_CHIAVE_API"
 
 r = requests.get("https://api.el3ctroservices.it/el3ctropay/fetch-orders/", headers={
     "Authorization": f"Bearer {API_KEY}"
@@ -76,11 +76,11 @@ Si riceverà una risposta con questo formato JSON:
 ```
 
 ### Ricevere la conferma del pagamento
-Se si vuole ricevere una conferma automatizzata a pagamento avvenuto si può usare il seguente codice come esempio per creare un webhook da inoltrare al gateway per ricevere i dati di conferma, la richiesta inviata dal gateway è firmata e nel codice di esempio si ha anche la parte di verifica della firma.
+Se si vuole ricevere una conferma automatizzata a pagamento avvenuto si può usare il seguente codice come esempio per creare un webhook da inoltrare al gateway per ricevere i dati di conferma, la richiesta inviata dal gateway è firmata e nel codice di esempio si ha anche la parte di verifica della firma tramite il vostro secret associato alla vostra chiave API.
 ```
-import hmac
-import hashlib
-from fastapi import Request, Header, HTTPException
+from fastapi import Request
+
+SECRET = "IL_VOSTRO_SECRET"
 
 def verify_signature(body: bytes, signature: str, secret: str):
     expected = hmac.new(
@@ -90,15 +90,27 @@ def verify_signature(body: bytes, signature: str, secret: str):
     ).hexdigest()
     return hmac.compare_digest(expected, signature)
 
-@app.post("/webhook")
+@router.post("/webhook/")
 async def webhook(request: Request, x_signature: str = Header(None)):
     body = await request.body()
 
-    if not verify_signature(body, x_signature, "supersecret"):
+    if not verify_signature(body, x_signature, SECRET):
         raise HTTPException(status_code=400, detail="Invalid signature")
 
     data = await request.json()
+
+    # Inizio del vostro codice per gestire i dati ricevuti
     print("Transaction received:")
     print(data)
+    # Fine del vostro codice per gestire i dati ricevuti
+    
     return {"status": "ok"}
+```
+i dati che riceverete in automatico saranno tutti stringhe e avranno questo formato JSON:
+```
+{
+    "amount": "LA QUANTITÀ DI SOL CHE AVETE RICEVUTO", 
+    "reference": "ID ORDINE UNICO", 
+    "tx": "CODICE TRANSAZIONE SULLA BLOCKCHAIN SOLANA"
+}
 ```
