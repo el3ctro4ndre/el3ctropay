@@ -12,6 +12,7 @@ Al momento el3ctropay è in work in progress, quindi è attivo sulla solana devn
 - [x] Redirect al sito web originale una volta terminato il pagamento
 - [x] Server callback per confermare il pagamento all'esercente
 - [x] Restyle della UI
+- [ ] Translate from Italian to English (I should have written everything in english at first)
 
 Tutti sono i benvenuti nel aprire degli [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) per proporre nuove features
 
