@@ -77,11 +77,15 @@ Si riceverà una risposta con questo formato JSON:
 ```
 
 ### Ricevere la conferma del pagamento
-Se si vuole ricevere una conferma automatizzata a pagamento avvenuto si può usare il seguente codice come esempio per creare un webhook da inoltrare al gateway per ricevere i dati di conferma, la richiesta inviata dal gateway è firmata e nel codice di esempio si ha anche la parte di verifica della firma tramite il vostro secret associato alla vostra chiave API.
+Se si vuole ricevere una conferma automatizzata a pagamento avvenuto si può usare il seguente codice come esempio per creare un webhook in FastAPI da inoltrare al gateway per ricevere i dati di conferma, la richiesta inviata dal gateway è firmata e nel codice di esempio si ha anche la parte di verifica della firma tramite il vostro secret associato alla vostra chiave API.
 ```
-from fastapi import Request
+from fastapi import FastAPI, Request, Header, HTTPException
+import hmac
+import hashlib
 
-SECRET = "IL_VOSTRO_SECRET"
+SECRET = "IL_VOSTRO_SECRET" 
+
+app = FastAPI()
 
 def verify_signature(body: bytes, signature: str, secret: str):
     expected = hmac.new(
@@ -91,7 +95,7 @@ def verify_signature(body: bytes, signature: str, secret: str):
     ).hexdigest()
     return hmac.compare_digest(expected, signature)
 
-@router.post("/webhook/")
+@app.post("/webhook/")
 async def webhook(request: Request, x_signature: str = Header(None)):
     body = await request.body()
 
@@ -101,7 +105,7 @@ async def webhook(request: Request, x_signature: str = Header(None)):
     data = await request.json()
 
     # Inizio del vostro codice per gestire i dati ricevuti
-    print("Transaction received:")
+    print("Pagamento ricevuto:")
     print(data)
     # Fine del vostro codice per gestire i dati ricevuti
     
