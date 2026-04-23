@@ -47,7 +47,7 @@ r = requests.post("https://api.el3ctroservices.it/el3ctropay/create-order/", jso
     "wallet": "WALLET_HERE", 
     "amount": 0.529,
     "redirect": "https://example.com/order-status?order=12345",
-    "webhook": "https://example.com/api/webhook/"  -- Optional, use it in case you want automatic payment confirmation
+    "webhook": "https://example.com/api/webhook/"  # Optional, use it in case you want automatic payment confirmation
 }, headers={
     "Authorization": f"Bearer {API_KEY}"
 })
@@ -77,9 +77,9 @@ Once the fetching will be succesfully created you will receive a JSON response w
         {
             "reference": "ORDER_ID",
             "wallet": "WALLET_HERE",
-            "paid": 1,                                        -- or 0 if the client hasn't paid yed
+            "paid": 1,                                        # or 0 if the client hasn't paid yed
             "amount": 0.529,
-            "link": "https://solscan.io/tx/TRANSACTION"       -- or null id the client hasn't paid yet
+            "link": "https://solscan.io/tx/TRANSACTION"       # or null id the client hasn't paid yet
         },
         {
             ...
