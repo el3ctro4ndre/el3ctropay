@@ -1,14 +1,6 @@
 # el3ctropay
 Are you looking for a fast, easy and reliable alternative to stripe? el3ctropay is what you need, a simple solana payment gateway that can be used in any application via API. 
 
-### WARNING
-At the moment el3ctropay is still a work in progress, it's fully working on the solana devnet.
-
-Since the gateway is still on the devnet I created a public API key and secret that people can use as demo and testing, since these keys are available to be used by everyone don't use them for final/personal use:  
-
-API key: sk_live_ec4601d2fa78156f3df132a286449cb377d12408c351a645aa429bbe00e55def  
-Secret: 54b3f8b4ef5a0bbc815ef1140b421062522e421f00eba52060198d5ba1e29e77
-
 ### Features and work in progress
 - [x] API base system
 - [x] API keys system
@@ -38,6 +30,11 @@ If you have any doubts you can check the [Privacy Policy](https://pay.el3ctroser
 The authentication via API Key protects the payment gateway from spam and ensuring privacy.
 Requesting an API Key is free of charge and can be done by contacting [@el3ctro4ndre](https://discord.com/users/617325296932356126) on discord.
 The API Key is sent to you with a secret that you'll need in case you want to setup a webhook on where to receive automatic payment confirmation.
+
+I leave down below a demo API key and secret, any orders made with this API key are processed on the devnet, since these keys are available to be used by everyone don't use them for final/personal use:  
+
+API key: sk_live_ec4601d2fa78156f3df132a286449cb377d12408c351a645aa429bbe00e55def  
+Secret: 54b3f8b4ef5a0bbc815ef1140b421062522e421f00eba52060198d5ba1e29e77
 
 ### Create a payment order
 A payment order can be created via an authenticated API call, the code down below shows a python example of how it can be done:
