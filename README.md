@@ -70,7 +70,7 @@ r = requests.get("https://api.el3ctroservices.it/el3ctropay/fetch-orders/", head
     "Authorization": f"Bearer {API_KEY}"
 })
 ```
-Onche the fetching will be succesfully created you will receive a JSON response with this structure:
+Once the fetching will be succesfully created you will receive a JSON response with this structure:
 ```
 {
     "orders": [
@@ -85,6 +85,7 @@ Onche the fetching will be succesfully created you will receive a JSON response 
             ...
         }
     ]
+}
 ```
 
 ### Automatic payment confirmation
