@@ -25,6 +25,8 @@ If you have any doubts you can check the project [Privacy Policy](https://pay.el
 
 ## DOCS
 
+To have a better navigation we reccommend you to check out our [docs](https://pay.el3ctroservices.it/docs).
+
 ### Get an API Key
 The authentication via API Key protects the payment gateway from spam and ensures privacy.  
 Requesting an API Key is free of charge and can be done by contacting [@el3ctro4ndre](https://discord.com/users/617325296932356126) on discord.  
