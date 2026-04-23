@@ -25,7 +25,7 @@ Everybody is welcome to open [issues](https://github.com/el3ctro4ndre/el3ctropay
 ### UI Restyling
 | Before | After |
 |--------|-------|
-| ![](https://github.com/user-attachments/assets/5b530ebc-a99c-4f2a-a8b9-1290b9607b2a) | ![](https://github.com/user-attachments/assets/08a0b9dc-5247-4e9f-8329-db92d9cca991) |
+| ![](https://github.com/user-attachments/assets/5b530ebc-a99c-4f2a-a8b9-1290b9607b2a) | ![](https://github.com/user-attachments/assets/ceec403c-bb14-41d9-a10d-5bf6d1838416) |
 
 ### Disclaimer
 el3ctropay makes the customer pay 0.0002 SOL more as a "processing fee", this cost equals about 0,015€, making the project able to sustain his own service costs to keep it online. (Euro value updated at 22th April 2026)
