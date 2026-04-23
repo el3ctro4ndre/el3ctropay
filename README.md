@@ -1,4 +1,4 @@
-# el3ctropay
+    # el3ctropay
 Are you looking for a fast, easy and reliable alternative to stripe? el3ctropay is what you need, a simple solana payment gateway that can be used in any application via API. 
 
 ### Features and work in progress
@@ -42,12 +42,12 @@ A payment order can be created via an authenticated API call, the code down belo
 API_KEY = "YOUR_API_KEY"
 
 r = requests.post("https://api.el3ctroservices.it/el3ctropay/create-order/", json={
-    "label": "YOUR SOCIETY LLC",
-    "message": "ORDER NUMBER OR ANY MESSAGE OF YOUR LIKING",
-    "wallet": "WALLET WHERE YOU WANT TO RECEIVE THE SOL", 
-    "amount": QUANTITY OF SOL YOU WANT TO RECEIVE (example: 0.529),
-    "redirect": "URL OF THE PAGE THE CLIENT WILL BE REDIRECTED AFTER THE PAYMENT HAS SUCCEDED",
-    "webhook": "WEBHOOK URL TO RECEIVE THE AUTOMATIC PAYMENT CONFIRMATION"  -- OPTIONAL
+    "label": "Acme Corp",
+    "message": "Order N* 12345",
+    "wallet": "WALLET_HERE", 
+    "amount": 0.529,
+    "redirect": "https://example.com/order-status?order=12345",
+    "webhook": "https://example.com/api/webhook/"  -- OPTIONAL
 }, headers={
     "Authorization": f"Bearer {API_KEY}"
 })
@@ -73,10 +73,10 @@ You will receive a JSON response with this list structure:
 {
     "orders": [
         {
-            "reference": "UNIQUE ORDER ID",
-            "wallet": "YOUR WALLET",
+            "reference": "ORDER_ID",
+            "wallet": "WALLET_HERE",
             "paid": 1,                                        -- or 0 if the client hasn't paid yed
-            "amount": SOL QUANTITY,
+            "amount": 0.529,
             "link": "https://solscan.io/tx/TRANSACTION"       -- or null id the client hasn't paid yet
         },
         {
@@ -116,7 +116,7 @@ async def webhook(request: Request, x_signature: str = Header(None)):
     data = await request.json()
 
     ### START OF THE DATA MANAGEMENT OF YOUR WEBSITE
-    print("Pagamento ricevuto:")
+    print("Payment received:")
     print(data)
     ### END OF THE DATA MANAGEMENT OF YOUR WEBSITE
     
@@ -125,8 +125,8 @@ async def webhook(request: Request, x_signature: str = Header(None)):
 The datas that the gateway will send in the automatic payment confirmation have the following JSON structure:
 ```
 {
-    "amount": "SOL QUANTITY YOU HAVE RECEIVED", 
-    "reference": "UNIQUE ORDER ID", 
-    "tx": "TRANSACTION CODE OF THE SOLANA BLOCKCHAIN"
+    "amount": "0.529", 
+    "reference": "ORDER_ID", 
+    "tx": "TRANSACTION_CODE_OF_THE_SOLANA_BLOCKCHAIN"
 }
 ```
