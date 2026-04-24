@@ -48,7 +48,7 @@ API_KEY = "YOUR_API_KEY"
 
 r = requests.post("https://api.el3ctroservices.it/el3ctropay/create-order/", json={
     "label": "Acme Corp",
-    "message": "Order N* 12345",
+    "message": "Order N° 12345",
     "wallet": "WALLET_HERE", 
     "amount": 0.529,
     "currency": "SOL"                                            # Can be "SOL", "USD", "EUR"
