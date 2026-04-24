@@ -10,6 +10,7 @@ el3ctropay is what you need, a simple Solana payment gateway that can be used in
 - [x] Redirect back to original website once the payment is completed
 - [x] Server callback to confirm the seller that the payment has been completed
 - [x] UI Restyle
+- [ ] Automatic currency conversion
 
 Everybody is welcome to open [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) to suggest new features
 
