@@ -10,7 +10,7 @@ el3ctropay is what you need, a simple Solana payment gateway that can be used in
 - [x] Redirect back to original website once the payment is completed
 - [x] Server callback to confirm the seller that the payment has been completed
 - [x] UI Restyle
-- [ ] Automatic currency conversion
+- [x] Automatic currency conversion
 
 Everybody is welcome to open [issues](https://github.com/el3ctro4ndre/el3ctropay/issues) to suggest new features
 
@@ -19,8 +19,10 @@ Everybody is welcome to open [issues](https://github.com/el3ctro4ndre/el3ctropay
 |--------|-------|
 | ![](https://github.com/user-attachments/assets/5b530ebc-a99c-4f2a-a8b9-1290b9607b2a) | ![](https://github.com/user-attachments/assets/ceec403c-bb14-41d9-a10d-5bf6d1838416) |
 
-### Disclaimer
-el3ctropay makes the customer pay 0.0002 SOL more as a "processing fee", this cost equals about 0,015€, making the project able to sustain his own service costs to keep it online. (Euro value updated at 22th April 2026)
+### Disclaimer and important informations
+el3ctropay makes the customer pay 0.0002 SOL more as a "processing fee", this cost equals about 0,015€, making the project able to sustain his own service costs to keep it online. (Euro value updated at 22th April 2026)  
+
+We made possible for you to input a payment amount in fiat currencies but when you will fetch any of the transactions datas you will find all the amounts in SOL. (the solana convertion rates are provided by the [coingecko API](https://www.coingecko.com/en/api))  
 
 If you have any doubts you can check the project [Privacy Policy](https://pay.el3ctroservices.it/privacy-policy/) and the [Terms and Conditions](https://pay.el3ctroservices.it/terms-and-conditions/).
 
@@ -49,8 +51,9 @@ r = requests.post("https://api.el3ctroservices.it/el3ctropay/create-order/", jso
     "message": "Order N* 12345",
     "wallet": "WALLET_HERE", 
     "amount": 0.529,
+    "currency": "SOL"                                            # Can be "SOL", "USD", "EUR"
     "redirect": "https://example.com/order-status?order=12345",
-    "webhook": "https://example.com/api/webhook/"  # Optional, use it in case you want automatic payment confirmation
+    "webhook": "https://example.com/api/webhook/"                # Optional, use it in case you want automatic payment confirmation
 }, headers={
     "Authorization": f"Bearer {API_KEY}"
 })
