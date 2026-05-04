@@ -32,7 +32,7 @@ To have a better navigation we reccommend you to check out our [docs](https://pa
 
 ### Get an API Key
 The authentication via API Key protects the payment gateway from spam and ensures privacy.  
-Requesting an API Key is free of charge and can be done by contacting [@el3ctro4ndre](https://discord.com/users/617325296932356126) on discord.  
+Requesting an API Key is free of charge and can be done by contacting [support@el3ctroservices.it](mailto:support@el3ctroservices.it?subject=el3ctropay%20API%20key%20request&body=Hi%2C%20I%20would%20like%20to%20request%20an%20API%20key%20for%20the%20el3ctropay%20service%3A%0A-%20Username%3A%20%0A%0AI%20accept%20the%20el3ctropay%20Privacy%20Policy%20and%20Terms%20of%20Service.) and giving them a username for your API key.  
 Once your request will be completed you will recieve both the API Key and a secret that you'll need in case you want to setup a webhook for automatic payment confirmation.  
 
 Down below you can find a demo API key and a demo secret, any orders made with this API key are processed on the Solana devnet.  
